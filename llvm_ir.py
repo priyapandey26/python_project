@@ -31,6 +31,10 @@ def process_llvm_ir(file_path, output_folder):
     current_pass_name = None
     pass_content = []
     
+    if not os.path.exists(file_path) or os.path.getsize(file_path) == 0:
+        print(f"File {file_path} does not exist or is empty.")
+        return
+
     with open(file_path, 'r') as file:
         for line in file:
             # Check if the line indicates the start of a new pass
